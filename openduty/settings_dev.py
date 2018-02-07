@@ -18,6 +18,14 @@ if 'test' not in sys.argv:
         }
     }
 
+EMAIL_SETTINGS = {
+    'user': "josephgunvalson@gmail.com",
+    'password': "Diablopsych*(",
+    'host': "smtp.gmail.com",
+    'port': "587",
+    'tls': True
+}
+
 BASE_URL = "http://localhost:8000"
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -55,4 +63,3 @@ AUTHENTICATION_BACKENDS = (
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'openduty.middleware.basicauthmiddleware.BasicAuthMiddleware',
 )
-
