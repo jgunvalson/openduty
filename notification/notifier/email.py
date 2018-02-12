@@ -9,12 +9,12 @@ class EmailNotifier:
     def __init__(self, config):
         self.__config = config
     def notify(self, notification):
-        print 'attempting to notify'
         mail_user = self.__config['user']
         mail_pwd = self.__config['password']
         mail_host = self.__config['host']
         mail_port = self.__config['port']
         mail_tls = self.__config['tls']
+        print "user: %s\nhost: %s\nport: %s\n" % (mail_user, mail_host, mail_port)
         truncate_length = int(self.__config.get('max_subject_length', 100))
         FROM = self.__config['user']
         TO = [notification.user_to_notify.email]

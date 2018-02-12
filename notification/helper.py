@@ -20,8 +20,15 @@ class NotificationHelper(object):
     @staticmethod
     def notify_user_about_incident(incident, user, delay=None, preparedmsg = None):
         notifications = NotificationHelper.generate_notifications_for_user(incident, user, delay, preparedmsg)
-
+        print "inside of notify_user_about_incident, here are the notifications list: %s\n" % (notifications)
         for notification in notifications:
+            notification_values = notification.__dict__.keys()
+            print(notification.id)
+            print(notification_values)
+            print(notification.message)
+            print(notification.notifier)
+            print(notification.user_to_notify_id)
+            print(notification.send_at)
             notification.save()
             send_notifications.apply_async((notification.id,) ,eta=notification.send_at)
 
@@ -66,7 +73,7 @@ class NotificationHelper(object):
 
     @staticmethod
     def generate_notifications_for_user(incident, user, delay=None, preparedmsg = None):
-
+        print "incident: %s\nuser:%s\npreparedmsg: %s\ndelay: %s\n" % (incident, user, preparedmsg, delay)
         now = timezone.make_aware(datetime.now(), timezone.get_current_timezone())
         current_time = now
         notifications = []
@@ -94,4 +101,5 @@ class NotificationHelper(object):
             method_index += 1
 
         # todo: error handling
+        print "about to return notifications that have been generated: %s\n" % (notifications)
         return notifications

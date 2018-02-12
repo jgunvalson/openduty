@@ -18,8 +18,10 @@ from openduty.models import EventLog
 
 @app.task(ignore_result=True)
 def send_notifications(notification_id):
+    print "before try block"
     try:
         notification = ScheduledNotification.objects.get(id = notification_id)
+        print "Inside of send_notifications with notifier: %s\n" % (notification.notifier)
         if notification.notifier == UserNotificationMethod.METHOD_XMPP:
             notifier = XmppNotifier(settings.XMPP_SETTINGS)
         if notification.notifier == UserNotificationMethod.METHOD_EMAIL:
@@ -64,4 +66,3 @@ def send_notifications(notification_id):
             logmessage.occurred_at = timezone.now()
             logmessage.save()
         raise
-

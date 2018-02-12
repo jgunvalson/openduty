@@ -22,7 +22,7 @@ EMAIL_SETTINGS = {
     'user': "josephgunvalson@gmail.com",
     'password': "Diablopsych*(",
     'host': "smtp.gmail.com",
-    'port': "587",
+    'port': 587,
     'tls': True
 }
 
