@@ -19,10 +19,10 @@ if 'test' not in sys.argv:
     }
 
 EMAIL_SETTINGS = {
-    'user': "josephgunvalson@gmail.com",
-    'password': "Diablopsych*(",
-    'host': "smtp.gmail.com",
-    'port': 587,
+    'user': "noreply@optum.com",
+    'password': "",
+    'host': "mailo2.uhc.com",
+    'port': 25,
     'tls': True
 }
 
